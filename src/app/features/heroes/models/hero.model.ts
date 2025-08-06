@@ -6,6 +6,7 @@ export interface Hero {
   creator: string;
   age: number;
   comicCreationYear: number;
+  picture:string,
   romanticInterest: string;
   weakness: string;
 }

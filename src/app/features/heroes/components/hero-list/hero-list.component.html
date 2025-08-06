@@ -1,1 +1,23 @@
-<p>hero-list works!</p>
+<div class="btn">
+  <button (click)="addHeroe()">new Hero</button>
+</div>
+
+<div>
+ 
+  @for ( hero of pagedHeroes() ; track hero.id){
+    <app-hero-card
+      [hero]="hero"
+      (edit)="onEdit($event)"
+      (delete)="onDelete($event)">
+    </app-hero-card>
+  }@empty {
+  }
+</div>
+
+<mat-paginator
+  [length]="heroesSignal().length"
+  [pageSize]="pageSize()"
+  [pageIndex]="currentPage()"
+  [pageSizeOptions]="[5, 10, 20]"
+  (page)="onPageChange($event)">
+</mat-paginator>
