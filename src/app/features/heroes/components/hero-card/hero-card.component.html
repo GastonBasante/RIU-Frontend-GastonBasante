@@ -1,0 +1,9 @@
+<div class="card">
+      <h3>{{ hero.name | uppercase}}</h3>
+      <p><strong>Power:</strong> {{ hero.power }}</p>
+      <p><strong>Universe:</strong> {{ hero.universe }}</p>
+      <div class="actions">
+        <button (click)="onEdit()">Edit</button>
+        <button (click)="onDelete()">Delete</button>
+      </div>
+    </div>
