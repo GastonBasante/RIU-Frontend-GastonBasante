@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, signal } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -12,6 +12,8 @@ import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
+import { UppercaseDirective } from '../../../../shared/directives/uppercase.directive';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 @Component({
   selector: 'app-hero-form',
   standalone: true,
@@ -22,6 +24,8 @@ import { MatButtonModule } from '@angular/material/button';
     MatLabel,
     MatInputModule,
     MatButtonModule,
+    UppercaseDirective,
+    NgxSkeletonLoaderModule,
   ],
   templateUrl: './hero-form.component.html',
   styleUrl: './hero-form.component.scss',
@@ -31,9 +35,10 @@ export class HeroFormComponent implements OnInit {
   private router = inject(Router);
   private route = inject(ActivatedRoute);
   private heroService = inject(HeroService);
+  readonly skeletonFields = Array(4);
   form!: FormGroup;
   isEditMode = false;
-
+  formReady = signal(false);
   private heroId!: number;
   private formSubmitted = false;
   ngOnInit(): void {
@@ -53,21 +58,53 @@ export class HeroFormComponent implements OnInit {
       ],
       power: [
         '',
-        [Validators.required, Validators.maxLength(20), Validators.pattern(/^[A-Za-zÁÉÍÓÚáéíóúñÑ\s]+$/)],
+        [
+          Validators.required,
+          Validators.maxLength(20),
+          Validators.pattern(/^[A-Za-zÁÉÍÓÚáéíóúñÑ\s]+$/),
+        ],
       ],
       universe: [
         '',
-        [Validators.required, Validators.maxLength(20), Validators.pattern(/^[A-Za-zÁÉÍÓÚáéíóúñÑ\s]+$/)],
+        [
+          Validators.required,
+          Validators.maxLength(20),
+          Validators.pattern(/^[A-Za-zÁÉÍÓÚáéíóúñÑ\s]+$/),
+        ],
       ],
       creator: [
         '',
-        [Validators.required, Validators.maxLength(20), Validators.pattern(/^[A-Za-zÁÉÍÓÚáéíóúñÑ\s]+$/)],
+        [
+          Validators.required,
+          Validators.maxLength(20),
+          Validators.pattern(/^[A-Za-zÁÉÍÓÚáéíóúñÑ\s]+$/),
+        ],
       ],
       age: [null, [Validators.required, Validators.min(1)]],
-      comicCreationYear: [null, [Validators.required,Validators.maxLength(20), Validators.min(1900), Validators.max(2025)]],
-      romanticInterest: ['', [Validators.pattern(/^[A-Za-zÁÉÍÓÚáéíóúñÑ\s]*$/),Validators.maxLength(20),]],
+      comicCreationYear: [
+        null,
+        [
+          Validators.required,
+          Validators.maxLength(20),
+          Validators.min(1900),
+          Validators.max(2025),
+        ],
+      ],
+      romanticInterest: [
+        '',
+        [
+          Validators.pattern(/^[A-Za-zÁÉÍÓÚáéíóúñÑ\s]*$/),
+          Validators.maxLength(20),
+        ],
+      ],
       picture: ['default-hero'],
-      weakness: ['', [Validators.pattern(/^[A-Za-zÁÉÍÓÚáéíóúñÑ\s]*$/),Validators.maxLength(20),]],
+      weakness: [
+        '',
+        [
+          Validators.pattern(/^[A-Za-zÁÉÍÓÚáéíóúñÑ\s]*$/),
+          Validators.maxLength(20),
+        ],
+      ],
     });
   }
   getHeroImagePath(): string {
@@ -107,7 +144,11 @@ export class HeroFormComponent implements OnInit {
         if (hero) {
           this.form.patchValue(hero);
         }
+        this.formReady.set(true);
       });
+    if (!this.isEditMode) {
+      this.formReady.set(true);
+    }
   }
   goBack() {
     this.router.navigate(['/heroes']);

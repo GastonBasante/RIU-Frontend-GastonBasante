@@ -3,12 +3,12 @@
   <section class="top-card">
     <img [src]="getHeroImagePath(hero)" [alt]="hero.name" loading="lazy">
     <div class="menu-icon">
-      <button (click)="onDelete()" class="material-icons icon-circle delete "></button>
+      <button (click)="onDelete()" class="material-icons icon-circle delete" matTooltip="Eliminar" >delete</button>
   
     </div>
   </section>
   <section class=middle-card>
-  <h1>{{ hero.name | uppercase}}</h1>
+  <h1>{{ hero.name }}</h1>
   <p><strong>Power:</strong> {{ hero.power }}</p>
   <p><strong>Universe:</strong> {{ hero.universe }}</p>
   <div class="btn">

@@ -2,10 +2,12 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Hero } from '../../models/hero.model';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 @Component({
   selector: 'app-hero-card',
   standalone: true,
-  imports: [CommonModule,MatButtonModule],
+  imports: [CommonModule,MatButtonModule,MatTooltipModule,NgxSkeletonLoaderModule],
   templateUrl: './hero-card.component.html',
   styleUrl: './hero-card.component.scss'
 })

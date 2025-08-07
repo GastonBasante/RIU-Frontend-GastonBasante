@@ -17,6 +17,7 @@ import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { ConfirmDialogService } from '../../../../core/services/confirm-dialog.service/confirm-dialog.service';
 import { firstValueFrom } from 'rxjs';
 import { MatButtonModule } from '@angular/material/button';
+import { NgxSkeletonLoaderModule } from "ngx-skeleton-loader";
 @Component({
   selector: 'app-hero-list',
   standalone: true,
@@ -25,7 +26,8 @@ import { MatButtonModule } from '@angular/material/button';
     HeroCardComponent,
     MatPaginatorModule,
     MatButtonModule,
-  ],
+    NgxSkeletonLoaderModule
+],
   templateUrl: './hero-list.component.html',
   styleUrl: './hero-list.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
