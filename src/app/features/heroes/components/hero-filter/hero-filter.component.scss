@@ -1,17 +1,19 @@
+@use '../../../../../styles/variables' as *;
+
 .input-wrapper {
+  width: 50%;
   position: relative;
   display: flex;
   align-items: center;
-
+      @media (max-width:$lg) {
+        width: 100%;
+  }
   .filter-input {
-    width: 50%;
+    width: 100%;
     padding: 8px 32px 8px 40px; 
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 4px;
-      @media (max-width: 576px) {
-    width: 100%;
-  }
   }
 
   .search-icon {
