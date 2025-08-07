@@ -53,15 +53,15 @@ export class HeroFormComponent implements OnInit {
         [
           Validators.required,
           Validators.maxLength(20),
-          Validators.pattern(/^[A-Za-zÁÉÍÓÚáéíóúñÑ\s]+$/),
+          Validators.pattern(/^[A-Za-zÁÉÍÓÚáéíóúñÑ\s]+(-[A-Za-zÁÉÍÓÚáéíóúñÑ\s]+)*$/)
         ],
       ],
       power: [
         '',
         [
           Validators.required,
-          Validators.maxLength(20),
-          Validators.pattern(/^[A-Za-zÁÉÍÓÚáéíóúñÑ\s]+$/),
+          Validators.maxLength(30),
+          Validators.pattern(/^[A-Za-zÁÉÍÓÚáéíóúñÑ\s]+([,-][A-Za-zÁÉÍÓÚáéíóúñÑ\s]+)*$/)
         ],
       ],
       universe: [
@@ -76,8 +76,8 @@ export class HeroFormComponent implements OnInit {
         '',
         [
           Validators.required,
-          Validators.maxLength(20),
-          Validators.pattern(/^[A-Za-zÁÉÍÓÚáéíóúñÑ\s]+$/),
+          Validators.maxLength(30),
+          Validators.pattern(/^[A-Za-zÁÉÍÓÚáéíóúñÑ\s]+([,-][A-Za-zÁÉÍÓÚáéíóúñÑ\s]+)*$/)
         ],
       ],
       age: [null, [Validators.required, Validators.min(1)]],
@@ -102,7 +102,7 @@ export class HeroFormComponent implements OnInit {
         '',
         [
           Validators.pattern(/^[A-Za-zÁÉÍÓÚáéíóúñÑ\s]*$/),
-          Validators.maxLength(20),
+          Validators.maxLength(30),
         ],
       ],
     });
@@ -124,6 +124,9 @@ export class HeroFormComponent implements OnInit {
     }
     if (control?.hasError('min')) {
       return 'Valor demasiado bajo';
+    }
+     if (control?.hasError('max')) {
+      return 'Valor demasiado alto';
     }
     return null;
   }

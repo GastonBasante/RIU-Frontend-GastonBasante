@@ -1,7 +1,7 @@
 
 @defer (when formReady()) {
 <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-container">
-  <div class="seccion1">
+  <div class="seccion">
     <div class="image-preview">
       <img [src]="getHeroImagePath()" alt="Imagen del héroe" />
     </div>
@@ -39,18 +39,19 @@
           {{ getErrorMessage("romanticInterest") }}
         </mat-error>
       </mat-form-field>
-
-      <mat-form-field appearance="outline" class="full-width">
-        <mat-label>Debilidad</mat-label>
-        <input matInput type="text" appUppercase formControlName="weakness" />
-        <mat-error *ngIf="getErrorMessage('weakness')">
-          {{ getErrorMessage("weakness") }}
+     <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Universo</mat-label>
+        <input matInput type="text" appUppercase formControlName="universe" />
+        <mat-error *ngIf="getErrorMessage('universe')">
+          {{ getErrorMessage("universe") }}
         </mat-error>
       </mat-form-field>
+
+
     </div>
   </div>
 
-  <div class="seccion2">
+  <div class="seccion">
     <div class="info-hero">
       <mat-form-field appearance="outline" class="full-width">
         <mat-label>Nombre</mat-label>
@@ -67,15 +68,14 @@
           {{ getErrorMessage("power") }}
         </mat-error>
       </mat-form-field>
-
-      <mat-form-field appearance="outline" class="full-width">
-        <mat-label>Universo</mat-label>
-        <input matInput type="text" appUppercase formControlName="universe" />
-        <mat-error *ngIf="getErrorMessage('universe')">
-          {{ getErrorMessage("universe") }}
+            <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Debilidad</mat-label>
+        <input matInput type="text" appUppercase formControlName="weakness" />
+        <mat-error *ngIf="getErrorMessage('weakness')">
+          {{ getErrorMessage("weakness") }}
         </mat-error>
       </mat-form-field>
-
+ 
       <mat-form-field appearance="outline" class="full-width">
         <mat-label>Creador</mat-label>
         <input matInput type="text" appUppercase formControlName="creator" />
