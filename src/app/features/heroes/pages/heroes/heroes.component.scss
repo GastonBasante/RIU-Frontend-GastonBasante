@@ -4,17 +4,20 @@
   left: 0;
   width: 100%;
   z-index: 1000;
-  background-color: #1976d2; 
+  background-color: #1976d2;
 }
 
-
 .logo {
+  width: 40%;
   min-width: 134px;
   font-size: 1.4rem;
   font-weight: 600;
   color: white;
 }
 
+.filter {
+  width: 50%;
+}
 .main-content {
   margin-top: 64px;
 }

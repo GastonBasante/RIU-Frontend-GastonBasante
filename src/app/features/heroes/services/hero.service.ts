@@ -32,13 +32,7 @@ export class HeroService {
       )
     );
   }
-  filterHeroes(term: string) {
-    const all = this.heroesSubject.value;
-    const filtered = all.filter((h: Hero) =>
-      h.name.toLowerCase().includes(term.toLowerCase())
-    );
-    this.heroesSubject.next(filtered);
-  }
+
   create(hero: Omit<Hero, 'id'>): Observable<Hero> {
     const newHero: Hero = { id: Math.floor(Math.random() * 1000000), ...hero };
     const current = this.heroesSubject.value;

@@ -1,8 +1,8 @@
 import { Component, inject, OnInit, signal, WritableSignal } from '@angular/core';
-import { HeroListComponent } from '../components/hero-list/hero-list.component';
-import { HeroFilterComponent } from "../components/hero-filter/hero-filter.component";
-import { HeroService } from '../services/hero.service';
-import { Hero } from '../models/hero.model';
+import { HeroListComponent } from '../../components/hero-list/hero-list.component';
+import { HeroFilterComponent } from "../../components/hero-filter/hero-filter.component";
+import { HeroService } from '../../services/hero.service';
+import { Hero } from '../../models/hero.model';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 @Component({

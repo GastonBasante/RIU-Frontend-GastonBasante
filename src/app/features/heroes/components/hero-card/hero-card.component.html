@@ -3,7 +3,7 @@
   <section class="top-card">
     <img [src]="getHeroImagePath(hero)" [alt]="hero.name" loading="lazy">
     <div class="menu-icon">
-      <button (click)="onDelete()" class="material-icons icon-circle delete" matTooltip="Eliminar" >delete</button>
+      <button (click)="onDelete()" data-testid="delete-btn" class="material-icons icon-circle delete" matTooltip="Eliminar" >delete</button>
   
     </div>
   </section>
@@ -12,7 +12,7 @@
   <p><strong>Power:</strong> {{ hero.power }}</p>
   <p><strong>Universe:</strong> {{ hero.universe }}</p>
   <div class="btn">
-    <button (click)="onEdit()"mat-flat-button>Editar</button>
+    <button data-testid="edit-btn" (click)="onEdit()"mat-flat-button>Editar</button>
 
   </div>
 </section>

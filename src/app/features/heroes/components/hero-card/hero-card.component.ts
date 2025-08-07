@@ -7,18 +7,22 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 @Component({
   selector: 'app-hero-card',
   standalone: true,
-  imports: [CommonModule,MatButtonModule,MatTooltipModule,NgxSkeletonLoaderModule],
+  imports: [
+    CommonModule,
+    MatButtonModule,
+    MatTooltipModule,
+    NgxSkeletonLoaderModule,
+  ],
   templateUrl: './hero-card.component.html',
-  styleUrl: './hero-card.component.scss'
+  styleUrl: './hero-card.component.scss',
 })
 export class HeroCardComponent {
-
-@Input() hero!: Hero;
+  @Input() hero!: Hero;
   @Output() edit = new EventEmitter<Hero>();
   @Output() delete = new EventEmitter<Hero>();
-getHeroImagePath(hero: Hero): string {
-  return `assets/media/${hero.picture}.jpg`;
-}
+  getHeroImagePath(hero: Hero): string {
+    return `assets/media/${hero.picture}.jpg`;
+  }
   onEdit() {
     this.edit.emit(this.hero);
   }
