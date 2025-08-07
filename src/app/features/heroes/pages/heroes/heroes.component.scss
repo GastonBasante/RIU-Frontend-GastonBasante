@@ -1,10 +1,16 @@
 .navbar {
   position: fixed;
+ 
   top: 0;
   left: 0;
   width: 100%;
   z-index: 1000;
   background-color: #1976d2;
+    @media (max-width: 576px) {
+    display: flex;
+    flex-direction: column;
+     height: 80px;
+  }
 }
 
 .logo {
@@ -17,6 +23,9 @@
 
 .filter {
   width: 50%;
+  @media (max-width: 576px) {
+    width: 100%;
+  }
 }
 .main-content {
   margin-top: 64px;
