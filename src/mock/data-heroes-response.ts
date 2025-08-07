@@ -1,4 +1,4 @@
-import { Hero } from "../features/heroes/models/hero.model";
+import { Hero } from "../app/features/heroes/models/hero.model";
 
 
 export const MOCK_HEROES: Hero[] = [
@@ -110,18 +110,18 @@ export const MOCK_HEROES: Hero[] = [
     picture: 'Flash',
     weakness: 'Time paradoxes',
   },
-  {
-    id: 10,
-    name: 'Green Lantern',
-    power: 'Power Ring (Energy Constructs)',
-    universe: 'DC',
-    creator: 'John Broome',
-    age: 34,
-    comicCreationYear: 1940,
-    romanticInterest: 'Carol Ferris',
-    picture: 'Green-Lantern',
-    weakness: 'Willpower and Fear',
-  },
+{
+  id: 10,
+  name: 'Green Arrow',
+  power: 'Expert Archer, Martial Artist, Master Tactician',
+  universe: 'DC',
+  creator: 'Mort Weisinger, George Papp',
+  age: 35,
+  comicCreationYear: 1941,
+  romanticInterest: 'Black Canary',
+  picture: 'Green-Arrow',
+  weakness: 'Human limitations, Impulsiveness',
+},
   {
     id: 11,
     name: 'Hulk',
@@ -168,7 +168,7 @@ export const MOCK_HEROES: Hero[] = [
     age: 30,
     comicCreationYear: 1941,
     romanticInterest: 'Steve Trevor',
-    picture: '',
+    picture: 'Wonder-Woman',
     weakness: 'Tied by her own lasso',
   },
   {
@@ -180,7 +180,7 @@ export const MOCK_HEROES: Hero[] = [
     age: 29,
     comicCreationYear: 1968,
     romanticInterest: 'James Rhodes',
-    picture: '',
+    picture: 'Captain-Marvel',
     weakness: 'Memory manipulation',
   }
 ];

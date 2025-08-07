@@ -1,3 +1,21 @@
-<input
-  (input)="onInputChange($event)"
-/>
+<div class="filter-wrapper">
+
+  <div class="input-wrapper">
+    <input
+      id="hero-search"
+      class="filter-input"
+      type="text"
+      [formControl]="searchControl"
+      (keyup.enter)="onEnter()"
+      placeholder="Busqueda"
+    />
+    <button
+      class="clear-button"
+      *ngIf="searchControl.value"
+      (click)="clearSearch()"
+      aria-label="Limpiar filtro"
+    >
+      ✕
+    </button>
+  </div>
+</div>

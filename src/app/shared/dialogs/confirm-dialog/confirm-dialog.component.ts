@@ -7,20 +7,8 @@ import { MatButtonModule } from '@angular/material/button';
   selector: 'app-confirm-dialog',
   standalone: true,
   imports: [CommonModule, MatDialogModule, MatButtonModule],
-  template: `
-    <h2 mat-dialog-title>{{ data.title || 'Confirmar acción' }}</h2>
-    <mat-dialog-content>
-      <p>{{ data.message || '¿Estás seguro?' }}</p>
-    </mat-dialog-content>
-    <mat-dialog-actions align="end">
-      <button mat-button (click)="onCancel()">
-        {{ data.cancelText || 'Cancelar' }}
-      </button>
-      <button mat-raised-button color="primary" (click)="onConfirm()">
-        {{ data.confirmText || 'Confirmar' }}
-      </button>
-    </mat-dialog-actions>
-  `
+  templateUrl: './confirm-dialog.component.html',
+  styleUrl: './confirm-dialog.component.scss',
 })
 export class ConfirmDialogComponent {
   dialogRef = inject(MatDialogRef<ConfirmDialogComponent>);

@@ -3,13 +3,12 @@ import { HeroListComponent } from '../components/hero-list/hero-list.component';
 import { HeroFilterComponent } from "../components/hero-filter/hero-filter.component";
 import { HeroService } from '../services/hero.service';
 import { Hero } from '../models/hero.model';
-import { Observable } from 'rxjs';
-import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @Component({
   selector: 'app-heroes',
   standalone: true,
-  imports: [HeroListComponent, HeroFilterComponent],
+  imports: [HeroListComponent, HeroFilterComponent,MatToolbarModule],
   templateUrl: './heroes.component.html',
   styleUrl: './heroes.component.scss',
 })

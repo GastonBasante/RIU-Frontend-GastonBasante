@@ -16,11 +16,16 @@ import { Router } from '@angular/router';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { ConfirmDialogService } from '../../../../core/services/confirm-dialog.service/confirm-dialog.service';
 import { firstValueFrom } from 'rxjs';
-
+import { MatButtonModule } from '@angular/material/button';
 @Component({
   selector: 'app-hero-list',
   standalone: true,
-  imports: [CommonModule, HeroCardComponent, MatPaginatorModule],
+  imports: [
+    CommonModule,
+    HeroCardComponent,
+    MatPaginatorModule,
+    MatButtonModule,
+  ],
   templateUrl: './hero-list.component.html',
   styleUrl: './hero-list.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -35,13 +40,17 @@ export class HeroListComponent {
   currentPage = signal(0);
   pageSize = signal(5);
 
-  readonly pagedHeroes = computed(() => {
-    const heroes = this.heroesSignal();
-    const start = this.currentPage() * this.pageSize();
-    const end = start + this.pageSize();
-    return heroes.slice(start, end);
-  });
+readonly pagedHeroes = computed(() => {
+  const heroes = this.heroesSignal();
+  const pageSize = this.pageSize();
+  const currentPage = this.currentPage();
 
+  const shouldReset = heroes.length < 5;
+  const start = shouldReset ? 0 : currentPage * pageSize;
+  const end = start + pageSize;
+
+  return heroes.slice(start, end);
+});
   onPageChange(event: PageEvent) {
     this.currentPage.set(event.pageIndex);
     this.pageSize.set(event.pageSize);

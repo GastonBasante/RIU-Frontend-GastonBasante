@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { map, delay } from 'rxjs/operators';
-import { MOCK_HEROES } from '../../../mock/data-heroes-response';
+import { MOCK_HEROES } from '../../../../mock/data-heroes-response';
 import { Hero } from '../models/hero.model';
 
 

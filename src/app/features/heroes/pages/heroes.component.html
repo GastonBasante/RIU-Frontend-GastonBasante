@@ -1,2 +1,13 @@
-<app-hero-filter (filterOutput)="onFilter($event)"></app-hero-filter>
-<app-hero-list [heroesSignal]="heroesSignal()"></app-hero-list>
+<mat-toolbar color="primary" class="navbar" role="header">
+  <div class="logo">
+    <span>Heroes App</span>
+  </div>
+
+  <div class="filter">
+    <app-hero-filter (filterOutput)="onFilter($event)"></app-hero-filter>
+  </div>
+</mat-toolbar>
+
+<main class="main-content">
+  <app-hero-list [heroesSignal]="heroesSignal()"></app-hero-list>
+</main>

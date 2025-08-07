@@ -1,78 +1,94 @@
-<button (click)="goToHome()" >volver</button>
 <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-container">
-<div class="image-preview">
-  <img [src]="getHeroImagePath()" alt="Imagen del héroe" width="150" />
-</div>
+  <div class="seccion1">
+    <div class="image-preview">
+      <img [src]="getHeroImagePath()" alt="Imagen del héroe" />
+    </div>
+    <div class="info-hero">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Edad</mat-label>
+        <input matInput type="number" formControlName="age" />
+        <mat-error *ngIf="getErrorMessage('age')">
+          {{ getErrorMessage("age") }}
+        </mat-error>
+      </mat-form-field>
 
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Año de creación del cómic</mat-label>
+        <input
+          matInput
+          type="number"
+          formControlName="comicCreationYear"
+          placeholder="Ej: 1999"
+        />
+        <mat-error *ngIf="getErrorMessage('comicCreationYear')">
+          {{ getErrorMessage("comicCreationYear") }}
+        </mat-error>
+      </mat-form-field>
 
-  <mat-form-field appearance="outline" class="full-width">
-    <mat-label>Nombre</mat-label>
-    <input matInput type="text" formControlName="name" />
-    <mat-error *ngIf="form.controls['name'].hasError('required')">
-      El nombre es obligatorio
-    </mat-error>
-  </mat-form-field>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Interés romántico</mat-label>
+        <input matInput type="text" formControlName="romanticInterest" />
+        <mat-error *ngIf="getErrorMessage('romanticInterest')">
+          {{ getErrorMessage("romanticInterest") }}
+        </mat-error>
+      </mat-form-field>
 
-  <mat-form-field appearance="outline" class="full-width">
-    <mat-label>Poder</mat-label>
-    <input matInput type="text" formControlName="power" />
-    <mat-error *ngIf="form.controls['power'].hasError('required')">
-      El poder es obligatorio
-    </mat-error>
-  </mat-form-field>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Debilidad</mat-label>
+        <input matInput type="text" formControlName="weakness" />
+        <mat-error *ngIf="getErrorMessage('weakness')">
+          {{ getErrorMessage("weakness") }}
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
 
-  <mat-form-field appearance="outline" class="full-width">
-    <mat-label>Universo</mat-label>
-    <input matInput type="text" formControlName="universe" />
-    <mat-error *ngIf="form.controls['universe'].hasError('required')">
-      El universo es obligatorio
-    </mat-error>
-  </mat-form-field>
+  <div class="seccion2">
+    <div class="info-hero">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Nombre</mat-label>
+        <input matInput type="text" formControlName="name" />
+        <mat-error *ngIf="getErrorMessage('name')">
+          {{ getErrorMessage("name") }}
+        </mat-error>
+      </mat-form-field>
 
-  <mat-form-field appearance="outline" class="full-width">
-    <mat-label>Creador</mat-label>
-    <input matInput type="text" formControlName="creator" />
-    <mat-error *ngIf="form.controls['creator'].hasError('required')">
-      El creador es obligatorio
-    </mat-error>
-  </mat-form-field>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Poder</mat-label>
+        <input matInput type="text" formControlName="power" />
+        <mat-error *ngIf="getErrorMessage('power')">
+          {{ getErrorMessage("power") }}
+        </mat-error>
+      </mat-form-field>
 
-  <mat-form-field appearance="outline" class="full-width">
-    <mat-label>Edad</mat-label>
-    <input matInput type="number" formControlName="age" />
-    <mat-error *ngIf="form.controls['age'].hasError('required')">
-      La edad es obligatoria
-    </mat-error>
-    <mat-error *ngIf="form.controls['age'].hasError('min')">
-      La edad debe ser mayor o igual a 0
-    </mat-error>
-  </mat-form-field>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Universo</mat-label>
+        <input matInput type="text" formControlName="universe" />
+        <mat-error *ngIf="getErrorMessage('universe')">
+          {{ getErrorMessage("universe") }}
+        </mat-error>
+      </mat-form-field>
 
-  <mat-form-field appearance="outline" class="full-width">
-    <mat-label>Año de creación del cómic</mat-label>
-    <input matInput type="number" formControlName="comicCreationYear" />
-    <mat-error *ngIf="form.controls['comicCreationYear'].hasError('required')">
-      El año de creación es obligatorio
-    </mat-error>
-    <mat-error *ngIf="form.controls['comicCreationYear'].hasError('min')">
-      El año debe ser válido
-    </mat-error>
-  </mat-form-field>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Creador</mat-label>
+        <input matInput type="text" formControlName="creator" />
+        <mat-error *ngIf="getErrorMessage('creator')">
+          {{ getErrorMessage("creator") }}
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
 
-  <mat-form-field appearance="outline" class="full-width">
-    <mat-label>Interés romántico</mat-label>
-    <input matInput type="text" formControlName="romanticInterest" />
-  </mat-form-field>
-
-  <mat-form-field appearance="outline" class="full-width">
-    <mat-label>Debilidad</mat-label>
-    <input matInput type="text" formControlName="weakness" />
-  </mat-form-field>
-
-  <button mat-raised-button color="primary" type="submit" [disabled]="form.pristine || form.invalid">
-    {{ isEditMode ? 'Actualizar' : 'Crear' }}
-  </button>
-  
+  <div class="btn-actions">
+    <button
+      mat-raised-button
+      class="center"
+      color="primary"
+      type="submit"
+      [disabled]="form.pristine || form.invalid"
+    >
+      {{ isEditMode ? "Actualizar" : "Crear" }}
+    </button>
+    <button type="button" (click)="goBack()" mat-button>volver</button>
+  </div>
 </form>
-
-

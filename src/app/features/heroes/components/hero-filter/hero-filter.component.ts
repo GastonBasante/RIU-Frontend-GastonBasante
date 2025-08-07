@@ -1,17 +1,32 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, signal } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { MatInputModule } from '@angular/material/input';
+
+import { FormsModule, ReactiveFormsModule, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-hero-filter',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, MatInputModule],
   templateUrl: './hero-filter.component.html',
-  styleUrl: './hero-filter.component.scss'
+  styleUrls: ['./hero-filter.component.scss'],
 })
 export class HeroFilterComponent {
   @Output() filterOutput = new EventEmitter<string>();
 
-  onInputChange(event: Event) {
-    const value = (event.target as HTMLInputElement).value;
-    this.filterOutput.emit(value);
+  searchControl = new FormControl('');
+
+  constructor() {
+    this.searchControl.valueChanges.subscribe((value) => {
+      this.filterOutput.emit(value?.trim() ?? '');
+    });
+  }
+
+  clearSearch() {
+    this.searchControl.setValue('');
+  }
+
+  onEnter() {
+    this.filterOutput.emit(this.searchControl.value?.trim() ?? '');
   }
 }
