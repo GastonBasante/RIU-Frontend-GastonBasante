@@ -1,0 +1,141 @@
+
+@defer (when formReady()) {
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-container">
+  <div class="seccion1">
+    <div class="image-preview">
+      <img [src]="getHeroImagePath()" alt="Imagen del héroe" />
+    </div>
+    <div class="info-hero">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Edad</mat-label>
+        <input matInput type="number" formControlName="age" />
+        <mat-error *ngIf="getErrorMessage('age')">
+          {{ getErrorMessage("age") }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Año de creación del cómic</mat-label>
+        <input
+          matInput
+          type="number"
+          formControlName="comicCreationYear"
+          placeholder="Ej: 1999"
+        />
+        <mat-error *ngIf="getErrorMessage('comicCreationYear')">
+          {{ getErrorMessage("comicCreationYear") }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Interés romántico</mat-label>
+        <input
+          matInput
+          type="text"
+          appUppercase
+          formControlName="romanticInterest"
+        />
+        <mat-error *ngIf="getErrorMessage('romanticInterest')">
+          {{ getErrorMessage("romanticInterest") }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Debilidad</mat-label>
+        <input matInput type="text" appUppercase formControlName="weakness" />
+        <mat-error *ngIf="getErrorMessage('weakness')">
+          {{ getErrorMessage("weakness") }}
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="seccion2">
+    <div class="info-hero">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Nombre</mat-label>
+        <input matInput type="text" appUppercase formControlName="name" />
+        <mat-error *ngIf="getErrorMessage('name')">
+          {{ getErrorMessage("name") }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Poder</mat-label>
+        <input matInput type="text" appUppercase formControlName="power" />
+        <mat-error *ngIf="getErrorMessage('power')">
+          {{ getErrorMessage("power") }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Universo</mat-label>
+        <input matInput type="text" appUppercase formControlName="universe" />
+        <mat-error *ngIf="getErrorMessage('universe')">
+          {{ getErrorMessage("universe") }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Creador</mat-label>
+        <input matInput type="text" appUppercase formControlName="creator" />
+        <mat-error *ngIf="getErrorMessage('creator')">
+          {{ getErrorMessage("creator") }}
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="btn-actions">
+    <button
+      mat-raised-button
+      class="center"
+      color="primary"
+      type="submit"
+      [disabled]="form.pristine || form.invalid"
+    >
+      {{ isEditMode ? "Actualizar" : "Crear" }}
+    </button>
+    <button type="button" (click)="goBack()" mat-button>volver</button>
+  </div>
+</form>
+}@placeholder {
+<div class="form-container">
+  <div class="seccion1">
+    <ngx-skeleton-loader
+      *ngFor="let item of [1]"
+      [theme]="{
+        height: '333px',
+        width: '250px',
+        'border-radius': '6px',
+        background: '#dedede'
+      }"
+      style="margin-bottom: 10px"
+    ></ngx-skeleton-loader>
+
+    <div class="info-hero">
+      <ngx-skeleton-loader
+        *ngFor="let item of skeletonFields"
+        [theme]="{
+          height: '56px',
+          width: '100%',
+          'border-radius': '6px',
+          background: '#dedede'
+        }"
+        style="margin-bottom: 10px"
+      ></ngx-skeleton-loader>
+    </div>
+  </div>
+
+  <ngx-skeleton-loader
+    *ngFor="let item of skeletonFields"
+    [theme]="{
+      height: '56px',
+      width: '100%',
+      'border-radius': '6px',
+      background: '#dedede'
+    }"
+    style="margin-bottom: 10px"
+  ></ngx-skeleton-loader>
+</div>
+}

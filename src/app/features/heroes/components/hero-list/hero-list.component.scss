@@ -1,0 +1,30 @@
+.contenedor {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.btn {
+  padding-top: 25px;
+  width: 97%;
+  margin: 0 auto;
+}
+.card-list {
+  display: flex;
+  flex-wrap: wrap;
+
+  flex-direction: row;
+  gap: 1rem;
+  padding: 1rem;
+  @media (max-width: 576px) {
+    justify-content: center;
+  }
+}
+.empty-list {
+  width: 100%;
+  .text {
+    p {
+      font-size: 25px;
+      text-align: center;
+    }
+  }
+}

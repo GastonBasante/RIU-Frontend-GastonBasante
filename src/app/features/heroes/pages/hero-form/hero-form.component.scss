@@ -1,0 +1,52 @@
+.form-container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border-radius: 10px;
+  background: white;
+  margin: 0 auto;
+  width: 50%;
+  gap: 15px;
+    @media (max-width:992px) {
+          width: 90%;
+     }
+}
+
+.full-width {
+  width: 100%;
+}
+
+.image-preview {
+  img {
+    width: 250px;
+    border-radius: 6px;
+  }
+}
+
+.seccion1 {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+  align-items: center;
+    @media (max-width:992px) {
+         flex-direction: column;
+     }
+}
+
+.info-hero {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 5px;
+}
+
+.btn-actions {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  button {
+    width: 200px;
+  }
+}

@@ -1,9 +1,19 @@
-<div class="card">
-      <h3>{{ hero.name | uppercase}}</h3>
-      <p><strong>Power:</strong> {{ hero.power }}</p>
-      <p><strong>Universe:</strong> {{ hero.universe }}</p>
-      <div class="actions">
-        <button (click)="onEdit()">Edit</button>
-        <button (click)="onDelete()">Delete</button>
-      </div>
+
+<main>
+  <section class="top-card">
+    <img [src]="getHeroImagePath(hero)" [alt]="hero.name" loading="lazy">
+    <div class="menu-icon">
+      <button (click)="onDelete()" data-testid="delete-btn" class="material-icons icon-circle delete" matTooltip="Eliminar" >delete</button>
+  
     </div>
+  </section>
+  <section class=middle-card>
+  <h1>{{ hero.name }}</h1>
+  <p><strong>Power:</strong> {{ hero.power }}</p>
+  <p><strong>Universe:</strong> {{ hero.universe }}</p>
+  <div class="btn">
+    <button data-testid="edit-btn" (click)="onEdit()"mat-flat-button>Editar</button>
+
+  </div>
+</section>
+</main>

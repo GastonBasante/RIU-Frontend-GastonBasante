@@ -1,1 +1,47 @@
-<p>hero-list works!</p>
+<main class="contenedor">
+  <div class="btn">
+    <button (click)="addHeroe()" mat-flat-button color="warn">
+      Agregar Heroe
+    </button>
+  </div>
+
+  <div class="card-list">
+    @defer (when pagedHeroes().length > 0) { @for (hero of pagedHeroes(); track
+    hero.id) {
+    <app-hero-card
+      [hero]="hero"
+      (edit)="onEdit($event)"
+      (delete)="onDelete($event)"
+    >
+    </app-hero-card>
+    }@empty {
+    <div class="empty-list">
+      <div class="text">
+        <p>No hay héroes para mostrar.</p>
+      </div>
+    </div>
+    } } @placeholder {
+    <ngx-skeleton-loader
+      *ngFor="let item of [1, 2, 3, 4, 5]"
+      style="flex: 1; height: 680px"
+      [theme]="{
+        height: '680px',
+        width: '340px',
+        background: '#dededede',
+        'border-radius': '12px'
+      }"
+    />
+    }
+  </div>
+  @if (pagedHeroes().length > 0) {
+  <mat-paginator
+    [length]="heroesSignal().length"
+    [pageSize]="pageSize()"
+    [pageIndex]="currentPage()"
+    [pageSizeOptions]="[5, 10, 20]"
+    (page)="onPageChange($event)"
+  >
+  </mat-paginator>
+
+  }
+</main>

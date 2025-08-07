@@ -1,19 +1,28 @@
-// src/app/guards/unsaved-changes.guard.ts
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { CanDeactivate } from '@angular/router';
-import { Observable } from 'rxjs';
+import { firstValueFrom } from 'rxjs';
+import { ConfirmDialogService } from '../services/confirm-dialog.service/confirm-dialog.service';
+
 
 export interface CanComponentDeactivate {
-  canDeactivate: () => Observable<boolean> | Promise<boolean> | boolean;
+  form: { dirty: boolean };
+  formSubmitted: boolean;
 }
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable({ providedIn: 'root' })
 export class UnsavedChangesGuard implements CanDeactivate<CanComponentDeactivate> {
-  canDeactivate(
-    component: CanComponentDeactivate
-  ): Observable<boolean> | Promise<boolean> | boolean {
-    return component.canDeactivate ? component.canDeactivate() : true;
+   confirmDialog = inject(ConfirmDialogService)
+
+
+  async canDeactivate(component: CanComponentDeactivate): Promise<boolean> {
+    if (component.form.dirty && !component.formSubmitted) {
+      const data ={
+        title:'¡Cambios sin Guardar!',
+        message:'¿Hay cambios sin guardar. ¿Seguro que querés salir?'
+      }
+      const result = await firstValueFrom(this.confirmDialog.confirm(data));
+      return result;
+    }
+    return true;
   }
 }
