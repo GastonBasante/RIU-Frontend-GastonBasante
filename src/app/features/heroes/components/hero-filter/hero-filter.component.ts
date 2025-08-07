@@ -26,7 +26,4 @@ export class HeroFilterComponent {
     this.searchControl.setValue('');
   }
 
-  onEnter() {
-    this.filterOutput.emit(this.searchControl.value?.trim() ?? '');
-  }
 }

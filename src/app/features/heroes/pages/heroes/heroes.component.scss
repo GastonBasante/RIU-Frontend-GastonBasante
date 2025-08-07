@@ -1,3 +1,4 @@
+@use '../../../../../styles/variables' as *;
 .navbar {
   position: fixed;
  
@@ -6,7 +7,7 @@
   width: 100%;
   z-index: 1000;
   background-color: #1976d2;
-    @media (max-width: 576px) {
+    @media (max-width: $xs) {
     display: flex;
     flex-direction: column;
      height: 80px;
@@ -23,7 +24,7 @@
 
 .filter {
   width: 50%;
-  @media (max-width: 576px) {
+  @media (max-width: $xs) {
     width: 100%;
   }
 }

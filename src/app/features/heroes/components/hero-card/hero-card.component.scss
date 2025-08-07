@@ -1,4 +1,4 @@
-
+@use '../../../../../styles/variables' as *;
 
 main {
   width: 340px;
@@ -60,7 +60,7 @@ h1 {
 .middle-card,
 footer {
   margin: 5px 25px;
-      @media (max-width:576px) {
+      @media (max-width:$xs) {
           margin: 5px 25px;
      }
 }
